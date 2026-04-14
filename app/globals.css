@@ -128,3 +128,18 @@
     @apply font-sans;
   }
 }
+
+@keyframes waveBar {
+  0%, 100% {
+    transform: scaleY(0.4);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
