@@ -4,6 +4,8 @@ import { jobInvites, jobs, recruiterSettings } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import InterviewSession from "@/components/interview/session/InterviewSession";
 
+export const dynamic = "force-dynamic";
+
 const TYPE_META: Record<string, { level: string }> = {
   SCR: { level: "Screening" },
   TEC: { level: "Technical" },

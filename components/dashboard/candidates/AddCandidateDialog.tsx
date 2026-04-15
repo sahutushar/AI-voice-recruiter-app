@@ -57,14 +57,20 @@ export default function AddCandidateDialog({ onClose, onSaved }: Props) {
     setParseError("");
     setParsing(true);
 
+    // Read raw text client-side as fallback for resumeText field
+    let fallbackText = "";
     try {
-      // Send file directly as FormData — server handles PDF/DOCX/TXT extraction
+      const raw = await file.text();
+      fallbackText = raw.replace(/<[^>]+>/g, " ").replace(/[^\x20-\x7E\n\r]/g, " ").replace(/\s+/g, " ").trim();
+    } catch { /* binary file — fallback stays empty */ }
+
+    try {
       const formData = new FormData();
       formData.append("file", file);
 
       const res = await fetch("/api/candidates/parse-resume", {
         method: "POST",
-        body: formData, // no Content-Type header — browser sets multipart boundary
+        body: formData,
       });
       const data = await res.json();
       if (res.status === 429) throw new Error(data.error ?? "AI quota exhausted. Please wait a few minutes.");
@@ -77,7 +83,7 @@ export default function AddCandidateDialog({ onClose, onSaved }: Props) {
         experience: data.experience ?? "",
         skills: data.skills ?? "",
         notes: "",
-        resumeText: data.resumeText ?? "",
+        resumeText: fallbackText,
       });
       if (data._warning) setParseError(data._warning);
     } catch (err) {

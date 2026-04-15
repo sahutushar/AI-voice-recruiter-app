@@ -9,6 +9,8 @@ import {
 import InterviewHeader from "@/components/interview/InterviewHeader";
 import InterviewJoinForm from "@/components/interview/InterviewJoinForm";
 
+export const dynamic = "force-dynamic";
+
 const TYPE_META: Record<string, { type: string; duration: string }> = {
   SCR: { type: "AI Screening",   duration: "15–20 minutes" },
   TEC: { type: "Tech Interview", duration: "30–45 minutes" },

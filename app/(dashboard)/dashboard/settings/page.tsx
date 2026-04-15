@@ -5,6 +5,8 @@ import { recruiterSettings } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import SettingsClient from "@/components/dashboard/settings/SettingsClient";
 
+export const dynamic = "force-dynamic";
+
 const DEFAULTS = {
   companyName: "RecruiterAI",
   companyIndustry: "",

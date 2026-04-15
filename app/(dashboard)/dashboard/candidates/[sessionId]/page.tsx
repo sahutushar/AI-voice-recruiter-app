@@ -16,6 +16,8 @@ import {
   Calendar03Icon,
 } from "@hugeicons/core-free-icons";
 
+export const dynamic = "force-dynamic";
+
 function ScoreBar({ label, score, color }: { label: string; score: number; color: string }) {
   return (
     <div className="flex flex-col gap-1.5">
