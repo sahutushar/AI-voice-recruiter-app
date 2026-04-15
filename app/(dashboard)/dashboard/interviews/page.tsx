@@ -3,6 +3,8 @@ import { jobs, jobInvites, candidates, interviewSessions, interviewSummaries } f
 import { desc, eq } from "drizzle-orm";
 import InterviewsClient from "@/components/dashboard/interviews/InterviewsClient";
 
+export const dynamic = "force-dynamic";
+
 export default async function InterviewsPage() {
   const [allJobs, allInvites, allCandidates, allSessions, allSummaries] = await Promise.all([
     db.select().from(jobs).orderBy(desc(jobs.createdAt)),

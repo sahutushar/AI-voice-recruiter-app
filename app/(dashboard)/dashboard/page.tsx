@@ -11,6 +11,8 @@ import {
 } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 function timeAgo(date: Date): string {
   const diff = Date.now() - date.getTime();
   const mins = Math.floor(diff / 60000);

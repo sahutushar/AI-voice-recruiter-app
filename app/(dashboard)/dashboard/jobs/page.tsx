@@ -3,6 +3,8 @@ import { jobs } from "@/db/schema";
 import { desc } from "drizzle-orm";
 import JobsClient from "@/components/dashboard/jobs/JobsClient";
 
+export const dynamic = "force-dynamic";
+
 export default async function JobsPage() {
   const allJobs = await db.select().from(jobs).orderBy(desc(jobs.createdAt));
 

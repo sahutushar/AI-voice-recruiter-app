@@ -3,6 +3,8 @@ import { candidates, interviewSessions, interviewSummaries } from "@/db/schema";
 import { desc, eq } from "drizzle-orm";
 import CandidatesClient from "@/components/dashboard/candidates/CandidatesClient";
 
+export const dynamic = "force-dynamic";
+
 export default async function CandidatesPage() {
   // Fetch recruiter-added candidates
   const allCandidates = await db
